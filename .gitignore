@@ -5,3 +5,5 @@ target*
 .idea/tasks.xml
 .idea/misc.xml
 *~
+.idea
+.idea_modules
