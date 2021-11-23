@@ -13,7 +13,7 @@ package frins
 import scala.util.parsing.combinator._
 
 object EDNReader extends JavaTokenParsers {
-  val set: Parser[Set[Any]] = "#{" ~> rep(elem) <~ "}" ^^ (Set() ++ _)
+  val set: Parser[Any] = "#{" ~> rep(elem) <~ "}" ^^ (Set() ++ _)
   val map: Parser[Map[Any, Any]] = "{" ~> rep(pair) <~ "}" ^^ (Map() ++ _)
   val vector: Parser[Vector[Any]] = "[" ~> rep(elem) <~ "]" ^^ (Vector() ++ _)
   val list: Parser[List[Any]] = "(" ~> rep(elem) <~ ")"
