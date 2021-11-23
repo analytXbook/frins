@@ -2,22 +2,16 @@ name := "frins"
 
 organization := "io.github.martintrojer"
 
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.12.2"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test"
+publishTo := Some("Artifactory Realm" at "http://10.0.0.244/artifactory/libs-release-local")
 
-resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
+credentials += Credentials(Path.userHome / ".sbt" / ".credentials-admin")
+resolvers += "Artifactory" at "http://10.0.0.244/artifactory/libs-release-local/"
 
-libraryDependencies += "io.github.martintrojer" % "atom-scala_2.10" % "0.1-SNAPSHOT"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 
-publishTo <<= version { (v: String) =>
-  val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
-
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+libraryDependencies += "io.github.martintrojer" %% "atom-scala" % "0.2-SNAPSHOT"
+libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.5"
